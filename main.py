@@ -3,14 +3,14 @@ import dht
 import time
 
 # --- Pin Configurations ---
-dht_sensor = dht.DHT22(Pin(15))       # DHT22 on GPIO 15
-soil_adc = ADC(Pin(26))               # Soil moisture (or potentiometer) on ADC 0
-pump_relay = Pin(14, Pin.OUT)         # Water pump relay on GPIO 14
-status_led = Pin(16, Pin.OUT)         # Status LED on GPIO 16
+dht_sensor = dht.DHT22(Pin(15)) 
+soil_adc = ADC(Pin(26))
+pump_relay = Pin(14, Pin.OUT)
+status_led = Pin(16, Pin.OUT)
 
 # --- Configuration Constants ---
-SOIL_THRESHOLD = 30000                # Lower ADC value = drier soil (0-65535 scale)
-CHECK_INTERVAL = 2                    # Seconds between readings
+SOIL_THRESHOLD = 30000
+CHECK_INTERVAL = 2
 
 # --- Helper Functions ---
 def read_sensors():
