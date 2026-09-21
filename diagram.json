@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "Wokwi Diagram Generator",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-pi-pico-w", "id": "pico", "top": 28.7, "left": -9.6, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -153.3, "left": -245.4, "attrs": {} },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 150,
+      "left": -180,
+      "attrs": { "title": "Soil Moisture Sensor (Simulated)" }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay1",
+      "top": 153.8,
+      "left": 172.8,
+      "attrs": { "title": "Water Pump Relay" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -195.2,
+      "left": 72.8,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_status",
+      "top": -30,
+      "left": -160,
+      "attrs": { "color": "green", "label": "Pump Active" }
+    },
+    { "type": "wokwi-resistor", "id": "r1", "top": 40, "left": -160, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "pico:GP15", "dht1:SDA", "green", [ "v0" ] ],
+    [ "pico:3V3", "dht1:VCC", "red", [ "v0" ] ],
+    [ "pico:GND.1", "dht1:GND", "black", [ "v0" ] ],
+    [ "pico:GP26", "pot1:SIG", "blue", [ "v0" ] ],
+    [ "pico:3V3", "pot1:VCC", "red", [ "v0" ] ],
+    [ "pico:GND.2", "pot1:GND", "black", [ "v0" ] ],
+    [ "pico:GP16", "relay1:IN", "orange", [ "h23.06", "v-31.71" ] ],
+    [ "pico:VBUS", "relay1:VCC", "red", [ "h23.06", "v131.25" ] ],
+    [ "pico:GND.3", "relay1:GND", "black", [ "v0" ] ],
+    [ "pico:GP0", "lcd1:SDA", "blue", [ "h-15.65", "v-185.75" ] ],
+    [ "pico:GP1", "lcd1:SCL", "yellow", [ "h-25.25", "v-185.85" ] ],
+    [ "pico:VBUS", "lcd1:VCC", "red", [ "h3.86", "v-195.25" ] ],
+    [ "pico:GND.4", "lcd1:GND", "black", [ "h-44.45", "v-367.91" ] ],
+    [ "pico:GP14", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "led_status:A", "green", [ "v0" ] ],
+    [ "pico:GND.5", "led_status:C", "black", [ "h32.66", "v-192.71" ] ]
+  ],
+  "dependencies": {}
+}
